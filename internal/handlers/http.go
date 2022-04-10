@@ -46,21 +46,17 @@ func NewHandler(config *internal.ServerConfig, logger *logger.Logger, d *repos.D
 }
 
 func (s *Server) Start() {
-	s.BaseRouter.GET("/", s.home)
+	s.BaseRouter.GET("/", s.getFiveMaxMetrics)
 
 	s.logger.Fatal(s.BaseRouter.StartServer(s.BaseServer))
 }
 
-type Person struct {
-	Name string
-	Age  int
-}
 
-func (s *Server) home(ctx echo.Context) error {
-
+func (s *Server) getFiveMaxMetrics(ctx echo.Context) error {
 	metr, err := s.db.GetFiveMaxMetrics()
 	if err != nil {
 		return err
 	}
+
 	return ctx.JSON(200, metr)
 }
