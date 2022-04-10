@@ -1,0 +1,11 @@
+pg_db:
+  host: "77.50.72.165"
+  port: "50003"
+  user: "sk-tst-us3827"
+  password: "Hyda8%d13"
+  database: "sk-tst"
+  ssl_mode: "disable"
+
+server:
+  host: "0.0.0.0"
+  port: "8080"
